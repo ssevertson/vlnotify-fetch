@@ -4,7 +4,7 @@ node_js:
 - '0.8'
 env:
   global:
-  - secure: 'A6jBCQe+L7wmbNZMgKoYYCRtuw18hsRpNBMIG8pKglkq7+uvAAJjjYPeI8GY
-      mRKWqNHbrwb2WGzeHwDjcFgnHLi5qs9DSeLYGikVvTywBOTfjzXbrugZNuyu
-      /pUZ0SVXtAAQX+raNisvdER608KquE+80yu9zf88Gjn65vi0DZQ='
-script: './node_modules/grunt-cli/bin/grunt ci'
+  - secure: 'IYq+nQQe5q/NXoQjfT003IAgmHTh4i+KQ1V5Lt4j9Ugdkurv7BmXOEyGFPYe
+      sCeo+qJsO6Zs++EtgSQ14t3EguaTM8+6NsmEhni6gHlOlzihHz2oDUL20jHB
+      qaQYt2g/UN+ALHFsTZ1YDy+zxHwVDv71r2ONA8HB9VQK5K1vU6c='
+script: ./node_modules/grunt-cli/bin/grunt ci
