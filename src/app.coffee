@@ -15,6 +15,8 @@ else
 for arg, index in process.argv
   process.argv[index] = '--payload' if arg is '-payload'
 
+console.log.info "Arguments: #{JSON.stringify(process.argv)}"
+
 app.config
   .argv()
   .env('_')
@@ -22,6 +24,7 @@ app.config
 
 # IronWorker payload support
 payload = app.config.get('payload')
+console.log.info "Payload: #{payload}"
 app.config.file('payload', payload) if payload
 
 # Support dust.js templates in config strings to reduce redundant values
