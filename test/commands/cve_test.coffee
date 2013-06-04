@@ -38,7 +38,7 @@ describe 'CVE', ->
       .reply 200, '', {'Last-Modified': '2013-02-01T00:00:00.000Z'}
 
     api.get('/vulnerability')
-      .reply 200, { cpe: [] }
+      .reply 200, { vulnerability: [] }
 
     server.get('/cve-modified.xml')
       .reply 200, '<nvd/>'
@@ -64,7 +64,7 @@ describe 'CVE', ->
       .reply 200, '', {'Last-Modified': '2013-02-01T00:00:00.000Z'}
 
     api.get('/vulnerability')
-      .reply 200, { cpe: [] }
+      .reply 200, { vulnerability: [] }
 
     server.get('/cve-modified.xml')
       .reply 200, '''
@@ -126,7 +126,7 @@ describe 'CVE', ->
       .reply 200, '', {'Last-Modified': '2013-02-01T00:00:00.000Z'}
 
     api.get('/vulnerability')
-      .reply 200, { cpe: [{
+      .reply 200, { vulnerability: [{
       id: 'CVE-2013-9999'
       }]}
 
@@ -146,7 +146,7 @@ describe 'CVE', ->
         </nvd>'''
 
     api.put('/vulnerability/CVE-2013-9999')
-      .reply 201, {}
+      .reply 204, {}
 
     cve.fetch (err) ->
       api.done()
@@ -169,7 +169,7 @@ describe 'CVE', ->
       .reply 200, '', {'Last-Modified': '2013-02-01T00:00:00.000Z'}
 
     api.get('/vulnerability')
-      .reply 200, { cpe: [] }
+      .reply 200, { vulnerability: [] }
 
     server.get('/cve-modified.xml')
       .reply 200, '''
@@ -203,7 +203,9 @@ describe 'CVE', ->
       .reply 200, '', {'Last-Modified': '2013-02-01T00:00:00.000Z'}
 
     api.get('/vulnerability')
-      .reply 200, { cpe: [] }
+      .reply 200, { vulnerability: [{
+      id: 'CVE-2013-9999'
+      }]}
 
     server.get('/cve-modified.xml')
       .reply 200, '''

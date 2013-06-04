@@ -83,4 +83,4 @@ cve.fetch = (callback) ->
 
   cves.fetch (err) ->
     console.log.error "Error fetching CVEs: #{JSON.stringify(err)}" if err
-    callback(err) if callback
+    callback(err)

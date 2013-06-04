@@ -5,7 +5,7 @@ async = require 'async'
 
 cpe = module.exports
 
-cpe.fetch = () ->
+cpe.fetch = (callback) ->
   cpes = new Fetch {
     api: app.api
     http: app.http
@@ -20,7 +20,7 @@ cpe.fetch = () ->
       return cpe_uri.bind(cpe_uri.unbind(record['name']))
 
     recordLastModified: (record) ->
-      return new Date(record['meta$item-metadata']['modification-date'])
+      return new Date(record['meta$item-metadata']?['modification-date'])
 
     recordTitle: (record) ->
       titleNodes = record['title']
@@ -28,7 +28,7 @@ cpe.fetch = () ->
       for titleNode in titleNodes
         if titleNode['xml$lang'] is 'en-US'
           return titleNode['$t']
-      return titleNodes[0]['$t']
+      return titleNodes[0]?['$t']
 
     toDocument: (record, recordId) ->
       return {
@@ -48,7 +48,7 @@ cpe.fetch = () ->
     done()
 
   cpes.fetch (err) ->
-    return if err
+    return callback(err) if err
 
     timerSave = console.log.startTimer()
     api = app.api('cpe')
@@ -84,5 +84,5 @@ cpe.fetch = () ->
           series(err)
     ], (err) ->
       timerSave.done 'Fetch complete'
-      
+      callback(err)
 

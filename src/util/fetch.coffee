@@ -108,6 +108,8 @@ fetch = module.exports = class Fetch extends EventEmitter
                 pending.add(recordId)
                 self.emit event, doc, () ->
                   pending.remove(recordId)
+              else
+                pending.skipped++
             else
               pending.skipped++
 

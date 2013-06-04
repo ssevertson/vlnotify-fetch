@@ -1,6 +1,6 @@
 {
   "api": {
-    "url": "http://vlnotify-api.jit.su"
+    "url": "https://vlnotify-api.jit.su"
   },
   "ironmq": {
     "queues": [
