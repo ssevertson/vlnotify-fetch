@@ -78,16 +78,19 @@ fetch = module.exports = class Fetch extends EventEmitter
 
           pending = {
             data: {}
+            total: 0
             skipped: 0
+            processed: 0
             done: (total) ->
               @total = total
               @complete = true
-              if @total - @skipped is 0
+              if @processed + @skipped is @total
                 waterfall(null, @total)
             add: (recordId) ->
               @data[recordId] = true
             remove: (recordId) ->
               delete @data[recordId]
+              @processed++
               if @complete and Object.keys(@data).length is 0
                 waterfall(null, @total)
           }

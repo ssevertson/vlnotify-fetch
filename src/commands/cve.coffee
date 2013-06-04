@@ -5,7 +5,6 @@ Fetch = require '../util/fetch'
 cve = module.exports
 
 cve.fetch = (callback) ->
-  count = 10
   cves = new Fetch {
     api: app.api
     http: app.http
@@ -14,8 +13,7 @@ cve.fetch = (callback) ->
     xpath: '/nvd/entry'
 
     isValid: (record) ->
-      count--
-      return record['vuln$vulnerable-software-list']?['vuln$product'] && count > 0
+      return record['vuln$vulnerable-software-list']?['vuln$product']
 
     recordId: (record) ->
       return record['vuln$cve-id']?['$t']

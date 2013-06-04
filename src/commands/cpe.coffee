@@ -38,12 +38,14 @@ cpe.fetch = () ->
   }
   
   toCreate = []
-  cpes.on 'create', (data) ->
+  cpes.on 'create', (data, done) ->
     toCreate.push(data)
+    done()
 
   toUpdate = []
-  cpes.on 'update', (data) ->
+  cpes.on 'update', (data, done) ->
     toUpdate.push(data)
+    done()
 
   cpes.fetch (err) ->
     return if err
