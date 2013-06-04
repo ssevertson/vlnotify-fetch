@@ -78,6 +78,27 @@ describe 'CVE', ->
             <vuln:last-modified-datetime>2013-02-01T00:00:00.000Z</vuln:last-modified-datetime>
             <vuln:cwe id="CWE-20"/>
             <vuln:summary>VLNotify-Fetch doesn't have sufficient test coverage</vuln:summary>
+            <vuln:cvss>
+              <cvss:base_metrics>
+                <cvss:score>5.8</cvss:score>
+                <cvss:access-vector>NETWORK</cvss:access-vector>
+                <cvss:access-complexity>MEDIUM</cvss:access-complexity>
+                <cvss:authentication>NONE</cvss:authentication>
+                <cvss:confidentiality-impact>PARTIAL</cvss:confidentiality-impact>
+                <cvss:integrity-impact>PARTIAL</cvss:integrity-impact>
+                <cvss:availability-impact>NONE</cvss:availability-impact>
+                <cvss:source>http://nvd.nist.gov</cvss:source>
+                <cvss:generated-on-datetime>
+                  2013-02-01T00:00:00.000Z
+                </cvss:generated-on-datetime>
+              </cvss:base_metrics>
+            </vuln:cvss>
+            <vuln:references xml:lang="en" reference_type="VENDOR_ADVISORY">
+              <vuln:source>SECUNIA</vuln:source>
+              <vuln:reference href="http://secunia.com/advisories/51412" xml:lang="en">
+                51412
+              </vuln:reference>
+            </vuln:references>
           </entry>
         </nvd>'''
 
