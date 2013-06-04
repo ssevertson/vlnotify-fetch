@@ -1,0 +1,11 @@
+*.log
+*.pid
+
+app
+node_modules
+
+.project
+.settings
+
+payload*.json
+iron.json

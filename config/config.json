@@ -1,0 +1,10 @@
+{
+  "api": {
+    "url": "http://vlnotify-api.jit.su"
+  },
+  "ironmq": {
+    "queues": [
+      "cve-create"
+     ]
+  }
+}
