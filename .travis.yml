@@ -2,4 +2,9 @@
 language: node_js
 node_js:
 - '0.8'
-script: "./node_modules/grunt-cli/bin/grunt test"
+env:
+  global:
+  - secure: 'A6jBCQe+L7wmbNZMgKoYYCRtuw18hsRpNBMIG8pKglkq7+uvAAJjjYPeI8GY
+      mRKWqNHbrwb2WGzeHwDjcFgnHLi5qs9DSeLYGikVvTywBOTfjzXbrugZNuyu
+      /pUZ0SVXtAAQX+raNisvdER608KquE+80yu9zf88Gjn65vi0DZQ='
+script: './node_modules/grunt-cli/bin/grunt ci'
