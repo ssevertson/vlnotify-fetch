@@ -7,4 +7,11 @@ env:
   - secure: 'IYq+nQQe5q/NXoQjfT003IAgmHTh4i+KQ1V5Lt4j9Ugdkurv7BmXOEyGFPYe
       sCeo+qJsO6Zs++EtgSQ14t3EguaTM8+6NsmEhni6gHlOlzihHz2oDUL20jHB
       qaQYt2g/UN+ALHFsTZ1YDy+zxHwVDv71r2ONA8HB9VQK5K1vU6c='
+  - secure: 'RayFuuswL/J8FmJnejzQqiJGm2HsSIFVMH0DP4LPB4SgPqn5yVr6qKsHiwlI
+      A6ADOtW6fyHMrr946kQO/X45v1nINzS2YMOwkNmpW0LJ6GkGd24E24g5gQjW
+      sLr0UnytgEzOaUEQO0yDsOMaeUedl7zFsRS+bnMNg3AWtE0GCdo='
+  - secure: 'BwVgsvqcA4RIxPSGt1mtz1Ho2+i/WTnvSveMO+ghL3NS07bZW4+99u/tAGuJ
+      0VXx4wV7nebM1lNHv4vbSTgNsQNCdF1gpKpl1CSv9KXbdTad000UhQ3TCBBO
+      yEQr2W0yuAXMbt7k6mstVod3MiW/TtFzws4bTKMW+ZGaaoMKLI0='
 script: ./node_modules/grunt-cli/bin/grunt ci
+after_success: ./ci/after_success.sh
