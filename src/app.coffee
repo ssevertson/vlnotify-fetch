@@ -11,11 +11,9 @@ app.root = if path.basename(__dirname) is 'app'
 else
   __dirname
 
-# Fix IronWorker's non-standard payload argument
+# Fix IronWorker's non-standard long name arguments
 for arg, index in process.argv
-  process.argv[index] = '--payload' if arg is '-payload'
-
-console.log "Arguments: #{JSON.stringify(process.argv)}"
+  process.argv[index] = '-' + arg if /^-[^-]./.test(arg)
 
 app.config
   .argv()
@@ -24,7 +22,6 @@ app.config
 
 # IronWorker payload support
 payload = app.config.get('payload')
-console.log "Payload: #{payload}"
 app.config.file('payload', payload) if payload
 
 # Support dust.js templates in config strings to reduce redundant values
@@ -42,7 +39,7 @@ for key, val of app.log
 app.use require(path.join app.root, 'app/init/api')
 
 app.use flatiron.plugins.cli, {
-  dir: path.join(__dirname, 'commands'),
+  dir: path.join(app.root, 'app/commands'),
   usage: [
     'Retrieve latest CPEs or vulnerabilities and parse for new entries'
   ]
