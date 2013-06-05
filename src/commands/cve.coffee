@@ -39,11 +39,13 @@ cve.fetch = (callback) ->
 
       cvss = record['vuln$cvss']?['cvss$base_metrics']
       if cvss
+        authentication = cvss['cvss$authentication']?['$t']?.toLowerCase()
+        authentication = 'single' if authentication is 'single_instance'
         doc.cvss = {
           score: parseFloat(cvss['cvss$score']?['$t'])
           access_vector: cvss['cvss$access-vector']?['$t']?.toLowerCase()
           access_complexity: cvss['cvss$access-complexity']?['$t']?.toLowerCase()
-          authentication: cvss['cvss$authentication']?['$t']?.toLowerCase()
+          authentication: authentication
           confidentiality_impact: cvss['cvss$confidentiality-impact']?['$t']?.toLowerCase()
           integrity_impact: cvss['cvss$integrity-impact']?['$t']?.toLowerCase()?.toLowerCase()
           availability_impact: cvss['cvss$availability-impact']?['$t']?.toLowerCase()
@@ -71,6 +73,7 @@ cve.fetch = (callback) ->
     timer = console.log.startTimer()
     api([data.id]).post data, (err, result) ->
       console.log.error "Error creating record #{data.id}: #{JSON.stringify(err)}" if err
+      console.log.error JSON.stringify(data) if err
       timer.done "Created record #{data.id}" if not err
       return done(err)
 
@@ -78,6 +81,7 @@ cve.fetch = (callback) ->
     timer = console.log.startTimer()
     api([data.id]).put data, (err, result) ->
       console.log.error "Error updating record #{data.id}: #{JSON.stringify(err)}" if err
+      console.log.error JSON.stringify(data) if err
       timer.done "Updated record #{data.id}" if not err
       done(err)
 
